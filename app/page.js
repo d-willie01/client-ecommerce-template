@@ -1,34 +1,23 @@
-import Image from 'next/image'
-import './global.css'
-import {Product} from '../components/Product'
-import {HeroBanner} from '../components/HeroBanner'
-import {FooterBanner} from '../components/FooterBanner'
+"use client"
+import React, {useState, useEffect} from 'react';
 
 
-export default function Home() {
-  return (
-
-    <>
+import Home from '../components/Home'
+import { Layout } from '@/components';
 
 
-   
-      <HeroBanner/>
-          
-      
-
-    <div className='products-heading'>
-      <h2>Best Selling Products</h2>
-      <p>Leather of Many Variation</p>
-    </div>
-
-    <div className='products-container'>
-      {['Product1', 'Product2'].map((product) => <Product/>)}
-    </div>
-
+const App = () => {
+ 
   
-      <FooterBanner/>
-    
-    
-    </>
+
+  return(
+    <Home/>
   )
 }
+
+
+export default App;
+  
+ 
+  
+
