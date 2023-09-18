@@ -10,9 +10,27 @@ const Page = (props) => {
 
   const [product, setProduct] = useState();
   const [allProducts, setAllProducts] = useState();
-  const [image, setImage] = useState()
+  const [image, setImage] = useState([]);
+  const [index, setIndex] = useState(0);
 
   const SLUG = props.params.slug
+
+  function mapArray(arr) {
+    // Create an empty array to store the new values
+    let result = [];
+  
+    // Iterate through the input array and apply the function to each element
+    for (let i = 0; i < arr.length; i++) {
+      // Call the provided function with the current array element
+      const newValue = urlFor(arr[i]);
+  
+      // Push the result of the function into the result array
+      result.push(newValue);
+    }
+  
+    // Return the new array with the updated values
+    return result;
+  }
 
 
   useEffect(() =>{
@@ -26,10 +44,14 @@ const Page = (props) => {
   setAllProducts(productsData)
   console.log(productData)
  
-  const url = urlFor(productData.image[0])
-  setImage(url);
+  console.log(productData.image)
 
 
+    const data =(mapArray(productData.image));
+
+    setImage(data);
+
+    console.log(image);
      
       
   }
@@ -49,20 +71,23 @@ const Page = (props) => {
 
 
         <div >
-          <img className='product-detail-image' src={image}/>
+        {image[index] && (
+             <img className='product-detail-image' src={image[index]} alt={`Product Image ${index}`} />
+          )}
           </div>
 
-          {/* <div className='small-image-container'>
+          <div className='small-image-container'>
             {image?.map((item, i) => (
-              <img src={urlFor(item)}
-              className=''
-              onMouseEnter=""
+              <img src={item}
+              className={i === index ? 'small-image selected-image' :
+            'small-image'}
+              onMouseEnter={() => setIndex(i)}
               />
             ))
 
             }
 
-          </div> */}
+          </div>
 
 
 
