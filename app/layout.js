@@ -4,6 +4,8 @@ import Head from 'next/head';
 import  Navbar  from "../components/Navbar";
 import  Footer  from "../components/Footer";
 import './global.css';
+import { StateContext } from "../context/StateContext";
+import { Toaster } from "react-hot-toast";
 
 
 export const metadata = {
@@ -13,11 +15,12 @@ export const metadata = {
  
 export default function RootLayout({ children }) {
  return (
-    
+    <StateContext>
+      
     <html lang="en">
       <body>
       <div className='layout'>
-
+<Toaster/>
 <Head>
   <title>David Leather Website</title>
 </Head>
@@ -36,5 +39,7 @@ export default function RootLayout({ children }) {
 </div>
       </body>
     </html>
+    
+    </StateContext>
   )
 }

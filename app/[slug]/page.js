@@ -5,6 +5,8 @@ import {client, urlFor} from '../../lib/client'
 import { groq} from 'next-sanity';
 import {AiOutlineMinus, AiOutlinePlus, AiOutlineStar, AiFillStar} from 'react-icons/ai'
 import {Product} from '../../components/Product'
+import {useStateContext} from '../../context/StateContext'
+
 
 const Page = (props) => {
 
@@ -12,6 +14,7 @@ const Page = (props) => {
   const [allProducts, setAllProducts] = useState();
   const [image, setImage] = useState([]);
   const [index, setIndex] = useState(0);
+  const {decQuantity, incQuantity, qty, onAdd} = useStateContext();
 
   const SLUG = props.params.slug
 
@@ -117,15 +120,15 @@ const Page = (props) => {
             <div className='quantity'>
               <h3>Quantity:</h3>
               <p className='quantity-desc'>
-                <span className='minus' onClick=""><AiOutlineMinus/></span>
-                <span className='num' onClick="">0</span>
-                <span className='plus' onClick=""><AiOutlinePlus/></span>
+                <span className='minus' onClick={decQuantity}><AiOutlineMinus/></span>
+                <span className='num' onClick="">{qty}</span>
+                <span className='plus' onClick={incQuantity}><AiOutlinePlus/></span>
               </p>
             </div>
 
             <div className='buttons'>
 
-              <button type='button' className='add-to-cart' onClick="">Add To Cart</button>
+              <button type='button' className='add-to-cart' onClick={() => onAdd(product, qty )}>Add To Cart</button>
 
               <button type='button' className='buy-now' onClick="">Buy Now</button>
 
