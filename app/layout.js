@@ -1,5 +1,9 @@
-import React from "react"
-
+import React from "react";
+import Home from "@/components/Home";
+import Head from 'next/head';
+import  Navbar  from "../components/Navbar";
+import  Footer  from "../components/Footer";
+import './global.css';
 
 
 export const metadata = {
@@ -11,7 +15,26 @@ export default function RootLayout({ children }) {
  return (
     
     <html lang="en">
-      <body>{children}</body>
+      <body>
+      <div className='layout'>
+
+<Head>
+  <title>David Leather Website</title>
+</Head>
+<header>
+  <Navbar/>
+</header>
+
+<main className='main-container'>
+    {children}
+</main>
+
+<footer>
+    <Footer/>
+</footer>
+
+</div>
+      </body>
     </html>
   )
 }
