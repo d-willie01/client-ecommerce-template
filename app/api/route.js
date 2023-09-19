@@ -13,7 +13,8 @@ export async function POST(request) {
             submit_type: 'pay',
             mode: 'payment',
             payment_method_types: ['card'],
-            billing_address_collection: 'auto',
+            billing_address_collection: 'required',
+            
             shipping_options: [
               { shipping_rate: 'shr_1NsB5SBwzquAK4jUxKO7V5sG' },
             ],
@@ -22,6 +23,7 @@ export async function POST(request) {
               const newImage = img.replace('image-', 'https://cdn.sanity.io/images/gqq99xwy/production/').replace('-webp', '.webp').replace('/PNG', '.PNG');
     
               return {
+                
                 price_data: { 
                   currency: 'usd',
                   product_data: { 
@@ -37,7 +39,7 @@ export async function POST(request) {
                 quantity: item.quantity
               }
             }),
-            success_url: `http://localhost:3000`,
+            success_url: `http://localhost:3000/`,
             cancel_url: `http://localhost:3000`,
           }
     
