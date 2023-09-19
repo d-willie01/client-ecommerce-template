@@ -5,7 +5,7 @@ import '../app/global.css'
 const Footer = () => {
   return (
     <div className='footer-container'>
-      <p>2023 Darius Williams All Rights Reserved</p>
+      <p>2023 All Rights Reserved</p>
 
       <p className='icons'>
         <AiFillInstagram/>

@@ -1,4 +1,5 @@
-import Reac, {useRef} from 'react';
+"use client"
+import React, {useRef} from 'react';
 import '../app/global.css'
 import Link from 'next/link';
 import {AiOutlineMinus, AiOutlinePlus,AiOutlineLeft, AiOutlineShopping} from 'react-icons/ai'
@@ -6,6 +7,7 @@ import {TiDeleteOutline} from 'react-icons/Ti';
 import toast from 'react-hot-toast';
 import {useStateContext} from '../context/StateContext';
 import { urlFor } from '../lib/client';
+import getStripe from '../lib/getStripe';
 
 
 
@@ -13,7 +15,38 @@ export const Cart = () => {
 
   const cartRef = useRef();
   const {totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove} = useStateContext();
-  console.log('hot garbage');
+ 
+
+  
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    console.log(JSON.stringify(cartItems))
+    try {
+      const response = await fetch('http://localhost:3000/api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cartItems),
+      });
+     
+  
+      if(response.statusCode === 500) return;
+      
+      const data = await response.json();
+      console.log(data);
+      toast.loading('Redirecting...');
+  
+      stripe.redirectToCheckout({ sessionId: data.id });
+    } catch (error) {
+      console.log(error)
+    }
+    
+  }
+
+
+
   return (
     <div className='cart-wrapper' ref={cartRef}>
 
@@ -82,7 +115,7 @@ export const Cart = () => {
               </div>
 
               <div>
-                <button type='button' className='btn'>
+                <button type='button' className='btn' onClick={handleCheckout}>
                   Checkout
                 </button>
               </div>

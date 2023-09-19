@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^2.3.0",
+    "@stripe/stripe-js": "^2.1.6",
+    "dotenv": "^16.3.1",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
@@ -17,6 +20,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
-    "sanity": "^3.16.4"
+    "sanity": "^3.16.4",
+    "stripe": "^13.6.0"
   }
 }
