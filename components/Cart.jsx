@@ -3,7 +3,7 @@ import React, {useRef} from 'react';
 import '../app/global.css'
 import Link from 'next/link';
 import {AiOutlineMinus, AiOutlinePlus,AiOutlineLeft, AiOutlineShopping} from 'react-icons/ai'
-import {TiDeleteOutline} from 'react-icons/Ti';
+//import {TiDeleteOutline} from 'react-icons/Ti';
 import toast from 'react-hot-toast';
 import {useStateContext} from '../context/StateContext';
 import { urlFor } from '../lib/client';
@@ -95,7 +95,7 @@ export const Cart = () => {
                   </div>
 
                   <button type="button" className='remove-item' onClick={() => onRemove(item)}> 
-                  <TiDeleteOutline/>
+                  Remove
                   </button>
 
                 </div>
