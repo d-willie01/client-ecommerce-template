@@ -8,7 +8,7 @@ import { StateContext } from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
 import 'dotenv/config'
 
-const result = dotenv.config()
+
 
 if (result.error) {
   throw result.error
