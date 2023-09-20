@@ -15,7 +15,7 @@ export const HeroBanner = (heroBanner) => {
            <img src={heroBanner?.image} alt='headphones' className='hero-banner-image'></img> 
 
            <div>
-            <Link href={`/product/${heroBannerInfo?.product}`}>
+            <Link href={`/wireless-ear-buds-pro-4`}>
                 <button>
                     {heroBannerInfo?.buttonText}
                 </button>

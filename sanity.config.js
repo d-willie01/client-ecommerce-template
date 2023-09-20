@@ -8,10 +8,10 @@ export default defineConfig({
 
   projectId: 'gqq99xwy',
   dataset: 'production',
-  token: 'skRhMo7hvcrPi7OLZFnpzs2yP0WUPYbRYion6KAzsBWTCxNbDcbEfR8UXJmQB4VVshXNogKcK7El4lzOuqjginHB4sOYEs1UUK19BaXvqtmkVTnYddcjy9KNnus70yrlrUA68iwnZBespBTGgGBeUZeplR1IYYN64jWzMDYQGYsnoPWQ78O6',
+  token: process.env.SANITY_TOKEN,
   plugins: [deskTool(),],
   basePath: '/studio',
-
+  
   schema: {
     types: schemaTypes,
   },

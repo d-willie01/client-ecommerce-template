@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
 
-const stripe = new Stripe('sk_test_51Nq0cFBwzquAK4jU77EkMttKAxmOf3QRswmBoTD3JiWLuWgiDbPxl6IKCl2lC3hqLN3QmWHNL1TLvRBcbVot5KcE00979MFOeQ');
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(request) {
     const data = await request.json()
@@ -39,7 +39,7 @@ export async function POST(request) {
                 quantity: item.quantity
               }
             }),
-            success_url: `http://localhost:3000/`,
+            success_url: `http://localhost:3000/success`,
             cancel_url: `http://localhost:3000`,
           }
     

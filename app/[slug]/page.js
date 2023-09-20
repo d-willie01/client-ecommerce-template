@@ -14,9 +14,17 @@ const Page = (props) => {
   const [allProducts, setAllProducts] = useState();
   const [image, setImage] = useState([]);
   const [index, setIndex] = useState(0);
-  const {decQuantity, incQuantity, qty, onAdd} = useStateContext();
+  const {decQuantity, incQuantity, qty, onAdd, setShowCart} = useStateContext();
 
   const SLUG = props.params.slug
+
+  const handleBuyNow = () =>{
+
+    onAdd(product, qty);
+
+    setShowCart(true);
+
+  }
 
   function mapArray(arr) {
     // Create an empty array to store the new values
@@ -121,7 +129,7 @@ const Page = (props) => {
               <h3>Quantity:</h3>
               <p className='quantity-desc'>
                 <span className='minus' onClick={decQuantity}><AiOutlineMinus/></span>
-                <span className='num' onClick="">{qty}</span>
+                <span className='num' >{qty}</span>
                 <span className='plus' onClick={incQuantity}><AiOutlinePlus/></span>
               </p>
             </div>
@@ -130,7 +138,7 @@ const Page = (props) => {
 
               <button type='button' className='add-to-cart' onClick={() => onAdd(product, qty )}>Add To Cart</button>
 
-              <button type='button' className='buy-now' onClick="">Buy Now</button>
+              <button type='button' className='buy-now' onClick={handleBuyNow}>Buy Now</button>
 
             </div>
         </div>

@@ -6,6 +6,7 @@ import  Footer  from "../components/Footer";
 import './global.css';
 import { StateContext } from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
+import 'dotenv/config'
 
 
 export const metadata = {
