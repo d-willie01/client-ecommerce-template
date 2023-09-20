@@ -16,7 +16,11 @@ export async function POST(request) {
             billing_address_collection: 'required',
             
             shipping_options: [
-              { shipping_rate: 'shr_1NsB5SBwzquAK4jUxKO7V5sG' },
+              // Testing Shipping Rate
+              // { shipping_rate: 'shr_1NsB5SBwzquAK4jUxKO7V5sG' },
+              { shipping_rate: 'shr_1NsKwQBwzquAK4jUuCXPzXxI' },
+              { shipping_rate: 'shr_1NrxWDBwzquAK4jU43qLvzoI' }
+              
             ],
             line_items: data.map((item) => {
               const img = item.image[0].asset._ref;
@@ -39,8 +43,8 @@ export async function POST(request) {
                 quantity: item.quantity
               }
             }),
-            success_url: `http://localhost:3000/success`,
-            cancel_url: `http://localhost:3000`,
+            success_url: `https://culturedapparel.vercel.app/success`,
+            cancel_url: `https://culturedapparel.vercel.app`,
           }
     
           // Create Checkout Sessions from body params.
