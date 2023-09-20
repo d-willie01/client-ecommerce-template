@@ -89,7 +89,7 @@ const Page = (props) => {
 
           <div className='small-image-container'>
             {image?.map((item, i) => (
-              <img src={item}
+              <img key={item._id} src={item}
               className={i === index ? 'small-image selected-image' :
             'small-image'}
               onMouseEnter={() => setIndex(i)}
