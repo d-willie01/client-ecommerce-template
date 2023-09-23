@@ -35,6 +35,11 @@ export default {
         name: 'details',
         title: 'Details',
         type: 'string',
+      },
+      { 
+        name: 'size',
+        title: 'Size (if none type "none")',
+        type: 'string',
       }
     ]
   }

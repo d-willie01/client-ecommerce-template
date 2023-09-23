@@ -24,6 +24,7 @@ export const Cart = () => {
     console.log(JSON.stringify(cartItems))
     try {
       const response = await fetch(`https://culturedapparel.vercel.app/api`, {
+        // const response = await fetch(`http://localhost:3000/api`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

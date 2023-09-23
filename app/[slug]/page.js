@@ -15,12 +15,23 @@ const Page = (props) => {
   const [image, setImage] = useState([]);
   const [index, setIndex] = useState(0);
   const {decQuantity, incQuantity, qty, onAdd, setShowCart} = useStateContext();
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [sizePresent, setSizePresent] = useState(false);
 
   const SLUG = props.params.slug
 
-  const handleBuyNow = () =>{
 
-    onAdd(product, qty);
+  useEffect(() => {
+    //console.log(product);
+  }, [product]);
+
+  const handleBuyNow = () =>{
+    
+  const updateProduct = {
+    ...product,
+    size: selectedSize
+  }
+    onAdd(updateProduct, qty);
 
     setShowCart(true);
 
@@ -49,6 +60,11 @@ const Page = (props) => {
 
   const productData = await client.fetch(groq`*[_type == 'product' && slug.current == '${SLUG}'][0]`);
   setProduct(productData)
+  console.log(productData)
+  if(productData?.size !== 'none')
+  {
+    setSizePresent(true);
+  }
 
   const productsData = await client.fetch(groq`*[_type == 'product']`);
 
@@ -70,6 +86,19 @@ const Page = (props) => {
 
   getStaticSideProps();
   },[])
+const addFunction = () =>{
+  //console.log(selectedSize);
+  //console.log(product)
+
+  const updateProduct = {
+    ...product,
+    size: selectedSize
+  }
+ 
+ 
+  onAdd(updateProduct, qty );
+}
+  
 
   return (
 
@@ -125,6 +154,50 @@ const Page = (props) => {
 
             <p className='price'>${product?.price}</p>
 
+
+            {/* Size selection */}
+{sizePresent ?(
+              <div style={{
+                height:55,
+                margin: 5,
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'center'
+                }}>
+  
+                  <button onClick={() => {
+                    setSelectedSize('S')
+                   
+                    
+                    }} className={`btn-size${selectedSize === 'S' ? '-selected' : ''}`}>
+                      S
+                  </button>
+  
+                  <button onClick={() => {
+                    setSelectedSize('M') 
+                
+                  }} className={`btn-size${selectedSize === 'M' ? '-selected' : ''}`}>
+                      M
+                  </button>
+                  <button onClick={() => {
+                    setSelectedSize('L') 
+                  
+                  }} className={`btn-size${selectedSize === 'L' ? '-selected' : ''}`}>
+                      L
+                  </button>
+                  <button onClick={() => {
+                    setSelectedSize('XL') 
+                  
+                  }} className={`btn-size${selectedSize === 'XL' ? '-selected' : ''}`}>
+                      XL
+                  </button>
+                
+              </div>
+) :  (
+  <div></div>
+)}
+ 
+
             <div className='quantity'>
               <h3>Quantity:</h3>
               <p className='quantity-desc'>
@@ -136,7 +209,7 @@ const Page = (props) => {
 
             <div className='buttons'>
 
-              <button type='button' className='add-to-cart' onClick={() => onAdd(product, qty )}>Add To Cart</button>
+              <button type='button' className='add-to-cart' onClick={addFunction}>Add To Cart</button>
 
               <button type='button' className='buy-now' onClick={handleBuyNow}>Buy Now</button>
 

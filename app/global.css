@@ -390,6 +390,45 @@ width: 100%;
 padding: 30px 65px;
 
 }
+.btn-size{
+  width: 20%;
+  max-width: 400px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  margin-left:10px;
+  text-transform: uppercase;
+  background-color: #f02d34;
+  color: #fff;
+  cursor: pointer;
+    transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+
+.btn-size:hover{
+  transform: scale(1.1,1.1);
+  background-color: #fff;
+  border: 1px solid #f02d34;
+  color: #f02d34;
+}
+
+.btn-size-selected{
+  width: 20%;
+  max-width: 400px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border: 1px solid #f02d34;
+  font-size: 20px;
+  margin-left:10px;
+  text-transform: uppercase;
+  background-color: #fff;
+  color: #f02d34;
+  cursor: pointer;
+    transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+
 
 .btn-container{
   width: 400px;

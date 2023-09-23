@@ -29,6 +29,7 @@ export async function POST(request) {
                   currency: 'usd',
                   product_data: { 
                     name: item.name,
+                    description: item?.size,
                     images: [newImage],
                   },
                   unit_amount: item.price * 100,
@@ -40,6 +41,8 @@ export async function POST(request) {
                 quantity: item.quantity
               }
             }),
+            // success_url: `https://localhost:3000/success`,
+            // cancel_url: `localhost:3000`,
             success_url: `https://culturedapparel.vercel.app/success`,
             cancel_url: `https://culturedapparel.vercel.app`,
           }
