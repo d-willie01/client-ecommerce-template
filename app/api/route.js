@@ -43,8 +43,8 @@ export async function POST(request) {
             }),
             // success_url: `https://localhost:3000/success`,
             // cancel_url: `localhost:3000`,
-            success_url: `https://culturedapparel.vercel.app/success`,
-            cancel_url: `https://culturedapparel.vercel.app`,
+            success_url: `https://allnall.vercel.app/success`,
+            cancel_url: `https://allnall.vercel.app`,
           }
     
           // Create Checkout Sessions from body params.
