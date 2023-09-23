@@ -34,11 +34,11 @@ import { runFireWorks } from '@/lib/utils';
 
         <p className='email-msg'>Check your email inbox for a receipt!</p>
 
-        <p className='description'>If you have questions/concerns, call at: 
+        <p className='description'>If you have questions/concerns, email: 
 
-        <a className='email'>
-          (1)800-456-2187
-        </a>
+        <span className='email'>allnall737520@gmail.com</span>
+
+
 
         </p>
 
