@@ -10,14 +10,14 @@ import { urlFor } from '../lib/client';
 import getStripe from '../lib/getStripe';
 
 
-
+//Cart function used for checking the user out with the products placed in the cart
 export const Cart = () => {
 
   const cartRef = useRef();
   const {totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove} = useStateContext();
  
 
-  
+  //Very important function the fetches the API route from the 'backend' to get info to redirect the user to the Stripe checkout 
   const handleCheckout = async () => {
     const stripe = await getStripe();
 
@@ -38,7 +38,8 @@ export const Cart = () => {
       const data = await response.json();
       console.log(data);
       toast.loading('Redirecting...');
-  
+      
+      //Stripe function to take user to payment, using the URL and data received from the backend
       stripe.redirectToCheckout({ sessionId: data.id });
     } catch (error) {
       console.log(error)

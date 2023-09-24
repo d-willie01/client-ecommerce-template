@@ -3,12 +3,15 @@ import { NextResponse } from 'next/server';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+//POST function to create the url for the Stripe checkout
+//acceots the request, which has the data for the specific product
 export async function POST(request) {
     const data = await request.json()
     
 
 
         try {
+            {/* Parameter block to add the lines for the user input in checkout must keep them standard to Stripe docs */}
           const params = {
             submit_type: 'pay',
             mode: 'payment',
@@ -54,6 +57,8 @@ export async function POST(request) {
           //res.status(200).json(session);
           return NextResponse.json(session);
         } catch (err) {
+
+            //returns the error back to the frontend for analysis
             return NextResponse.json({ err })
         }
     

@@ -6,10 +6,14 @@ export default defineConfig({
   name: 'default',
   title: 'david-sanity-website',
 
-  projectId: 'gqq99xwy',
+  projectId: '', //Change this for every new owner
+
   dataset: 'production',
-  token: process.env.SANITY_TOKEN,
+
+  token: process.env.SANITY_TOKEN, //Change this for every new owner
+
   plugins: [deskTool(),],
+
   basePath: '/studio',
   
   schema: {

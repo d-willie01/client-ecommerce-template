@@ -8,8 +8,12 @@ import '../global.css';
 import { useStateContext } from '../../context/StateContext';
 import { runFireWorks } from '@/lib/utils';
 
+
+//Page reached after successful pruchase
  const Success = () => {
 
+  //resetting cart back to defaults
+  //Notfiy owner of site about the order here
   useEffect(() =>{
     localStorage.clear();
     setCartItems([]);

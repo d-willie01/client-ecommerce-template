@@ -21,12 +21,12 @@ const Page = (props) => {
   const SLUG = props.params.slug
 
 
-  useEffect(() => {
-    //console.log(product);
-  }, [product]);
+  // function to skip adding to cart, shows cart and item immidiately and is ready to checkout
 
   const handleBuyNow = () =>{
     
+  //function adds the user input for the size selection
+  // three dot operator adds previous array contents to the object
   const updateProduct = {
     ...product,
     size: selectedSize
@@ -37,6 +37,7 @@ const Page = (props) => {
 
   }
 
+  //funtion to itereate through the images to make them visible
   function mapArray(arr) {
     // Create an empty array to store the new values
     let result = [];
@@ -55,8 +56,10 @@ const Page = (props) => {
   }
 
 
+//On refresh of page, this use effect grabs the product selected to provide the specific details
+//Also grabs all the products data to supply the carousel under the details for other products
   useEffect(() =>{
-    const getStaticSideProps = async() => {
+  const getStaticSideProps = async() => {
 
   const productData = await client.fetch(groq`*[_type == 'product' && slug.current == '${SLUG}'][0]`);
   setProduct(productData)
@@ -86,6 +89,8 @@ const Page = (props) => {
 
   getStaticSideProps();
   },[])
+
+//helper function to add the size value slection to the cart
 const addFunction = () =>{
   //console.log(selectedSize);
   //console.log(product)
@@ -108,8 +113,8 @@ const addFunction = () =>{
 
         <div>
 
-
-
+      
+      {/* div to hold and render small images */}
         <div >
         {image[index] && (
              <img className='product-detail-image' src={image[index]} alt={`Product Image ${index}`} />
@@ -133,6 +138,7 @@ const addFunction = () =>{
 
         </div>
 
+  {/*Reviews */}
         <div className='product-detail-desc'>
             <h1>{product?.name}</h1>
             <div className='reviews'>
@@ -197,7 +203,7 @@ const addFunction = () =>{
   <div></div>
 )}
  
-
+      {/* Quantity selection */}
             <div className='quantity'>
               <h3>Quantity:</h3>
               <p className='quantity-desc'>
@@ -222,7 +228,7 @@ const addFunction = () =>{
           
         </div>
 
-
+        {/* Recommended products carosel */}
           <div className='maylike-products-wrapper'>
             <h2>You May Also Like</h2>
             <div className='marquee'>

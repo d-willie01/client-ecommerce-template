@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 
 import Home from '../components/Home'
 
-
+//Main app page
 
 const App = () => {
  

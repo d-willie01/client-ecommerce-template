@@ -1,0 +1,11 @@
+Here are the instructions to setup the template for a new implementation:
+
+1: Create a new sanity configuration using CLI
+
+2: From that Sanity config, take the project ID and login to the Sanity website to create and API token to place inside the config as well
+
+3: in the lib/client file, change the project ID as well
+
+4: to test, change the URL's in /components/cart and in /app/api/route to match local port being used 
+
+5: on deployment, take the new URL and place it into the local URL's
